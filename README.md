@@ -3,6 +3,10 @@
 ### Español:
 Simulador de Máquina de turing
 
+Escritura y movimientos simultaneos o independientes
+Dispone de movimientos L, R , S
+Cinta infinita solo a la derecha
+
 Requisitos: Tener instalado y actualizado cmake y gdb
 ```bash
 sudo apt-get update
