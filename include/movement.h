@@ -19,7 +19,7 @@
 class Movement {
 
   private:
-    std::string movement_;
+    std::string movement_; //L, R o S
 
   public:
     Movement();

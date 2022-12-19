@@ -23,23 +23,25 @@
 class TuringMachine {
   private:
     Alphabet alphabet_;
+    Alphabet tape_alphabet_;
     std::vector<State> states_;
     std::vector<Transition> transitions_;
     Tape tape_;
-    State initial_state_;
+    State initial_stat_;
     std::vector<State> final_states_;
     State current_state_;
     int head_position_;
     bool halt_;
     bool accept_;
-    bool reject_;
 
   public:
     TuringMachine();
+    TuringMachine(std::ifstream &file);
     TuringMachine(std::string filename);
     ~TuringMachine();
 
-    void load(std::string filename);
+    void loadMachineFromFile(std::ifstream &in);
+    void checkMachine();
     void run();
     void print();
 
@@ -53,8 +55,7 @@ class TuringMachine {
     void setCurrentPosition(int current_position);
     void setHalt(bool halt);
     void setAccept(bool accept);
-    void setReject(bool reject);
-
+  
     Alphabet getAlphabet();
     std::vector<State> getStates();
     std::vector<Transition> getTransitions();
@@ -65,7 +66,8 @@ class TuringMachine {
     int getCurrentPosition();
     bool getHalt();
     bool getAccept();
-    bool getReject();
 };
+
+
 
 #endif
