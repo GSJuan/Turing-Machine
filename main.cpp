@@ -14,15 +14,42 @@
 #include "turing_machine.h"
 
 int main(int argc, char *argv[]) {
+
+  if(argc <= 2) {
+    std::cout << "Usage: " << argv[0] << " -f <filename inside test directory>"  << std::endl;
+    return 1;
+  }
+
   std::string path = TEST_RESOURCE_DIR;
-  path += "Ejemplo_MT.txt";
+  path += argv[2];
   TuringMachine tm = TuringMachine(path);
-  tm.print();
-  tm.loadTape("10010010");
-  tm.printTape();
-  if(tm.run())
-    std::cout << "Cadena aceptada" << std::endl;
-  else
-    std::cout << "Cadena rechazada" << std::endl;
+
+  while (true) {
+    std::string input;
+    std::cout << "If you want to EXIT, type 'exit()'" << std::endl;
+    std::cout << "If you want to print the Loaded TM definition, type 'print()'" << std::endl;
+    std::cout << "Enter input word or command: ";
+    std::cin >> input;
+
+    system("clear");
+
+    if(input == "" || input == " ") {
+      std::cout << "Empty input" << std::endl;
+      continue;
+    } else if (input == "exit()") {
+      std::cout << "Exiting..." << std::endl;
+      break;
+    } else if(input == "print()") {
+      tm.print();
+      std::cout << std::endl;
+    } else {
+      tm.loadTape(input);
+      if(tm.run()) {
+        std::cout << "Word Accepted!" << std::endl << std::endl;
+      } else {
+        std::cout << "Word Rejected!" << std::endl << std::endl;
+      }
+    }
+  }
   return 0;
 }
