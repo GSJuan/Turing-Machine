@@ -3,7 +3,7 @@
 ### Español:
 Simulador de Máquina de turing
 
-Escritura y movimientos simultaneos o independientes
+Escritura y movimientos simultaneos
 Dispone de movimientos L, R , S
 Cinta infinita solo a la derecha
 
@@ -22,7 +22,7 @@ cmake --build build --config Debug --target all --
 
 - Comando de ejecución de ejemplo
 ```bash
-./build/TuringMachine
+./build/Turing-Machine -f Ejemplo_MT.txt
 ```
 
 NOTA: Si se quisiera añadir otro fichero de definicion de automata para probar, se debe arrastrar a la carpeta 'test'.
@@ -33,3 +33,4 @@ Por ello, es necesario que el archivo se encuentre en el directorio y solo pase 
 Códigos de error:
  + 1 - Error en la apertura de archivo de definición de autómata
  + 2 - Autómata definido incorrectamente
+ + 3 - Tape not loaded before running

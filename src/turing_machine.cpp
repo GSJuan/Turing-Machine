@@ -183,6 +183,12 @@ void TuringMachine::checkMachine() {
 }
 
 void TuringMachine::loadTape(std::string tape) {
+  for (auto symbol : tape) {
+    if(!tape_alphabet_.isSymbol(std::string(1, symbol))) {
+      std::cerr << "Error: tape symbol " << symbol << " not in tape alphabet" << std::endl;
+      exit(2);
+    }
+  }
   tape_ = Tape(tape, white_);
 }
 
