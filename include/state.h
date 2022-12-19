@@ -30,7 +30,10 @@ class State {
     std::string getState() const;
     void setState(std::string state);
 
-    State& operator= (const State& newState);
+    State& operator=(const State& newState);
+    bool operator<(const State& newState) const;
+    bool operator==(const State& newState) const;
+    bool operator!=(const State& newState) const;
 
     friend std::ostream& operator<<(std::ostream& os, const State& state);
 };

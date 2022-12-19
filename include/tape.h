@@ -16,15 +16,20 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 class Tape {
 
   private: 
   std::vector<std::string> tape_;
+  std::string white_;
 
   public:
     Tape();
     Tape(std::vector<std::string> tape);
+    Tape(std::vector<std::string> tape, std::string white);
+    Tape(std::string tape);
+    Tape(std::string tape, std::string white);
     ~Tape();
 
     std::vector<std::string> getTape() const;

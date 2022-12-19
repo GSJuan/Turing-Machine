@@ -73,3 +73,9 @@ Transition& Transition::operator= (const Transition& newTransition) {
   movement_ = newTransition.getMovement();
   return *this;
 }
+
+std::ostream& operator<<(std::ostream& os, const Transition& transition) {
+  os << "(" << transition.getState() << ", " << transition.getSymbol() << ") ---> (" << transition.getNextState()
+  << ", " << transition.getNextSymbol() << ", " << transition.getMovement() << ")";
+  return os;
+}

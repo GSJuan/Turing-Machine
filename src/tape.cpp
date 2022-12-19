@@ -15,10 +15,29 @@
 
 Tape::Tape() {
   tape_ = {};
+  white_ = ".";
 }
 
 Tape::Tape(std::vector<std::string> tape) {
   tape_ = tape;
+}
+
+Tape::Tape(std::vector<std::string> tape, std::string white) {
+  tape_ = tape;
+  white_ = white;
+}
+
+Tape::Tape(std::string tape) {
+  for (int i = 0; i < tape.size(); i++) {
+    tape_.push_back(tape.substr(i, 1));
+  }
+}
+
+Tape::Tape(std::string tape , std::string white) {
+  for (int i = 0; i < tape.size(); i++) {
+    tape_.push_back(tape.substr(i, 1));
+  }
+  white_ = white;
 }
 
 Tape::~Tape() {}
@@ -32,8 +51,9 @@ void Tape::setTape(std::vector<std::string> tape) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Tape& tape) {
+  os << "|";
   for (int i = 0; i < tape.tape_.size(); i++) {
-    os << tape.tape_[i];
+    os << tape.tape_[i] << "|";
   }
   return os;
 }
@@ -52,6 +72,6 @@ std::string Tape::read(int position) {
 
 void Tape::padRight(int position) {
   for (int i = tape_.size(); i <= position; i++) {
-    tape_.push_back(" ");
+    tape_.push_back(white_);
   }
 }

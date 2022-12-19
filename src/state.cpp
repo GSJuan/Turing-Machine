@@ -34,6 +34,27 @@ State& State::operator= (const State& newState) {
   return *this;
 }
 
+bool State::operator<(const State& newState) const {
+  if (getState() < newState.getState())
+    return true;
+  else
+    return false;
+}
+
+bool State::operator==(const State& newState) const {
+  if (getState() == newState.getState())
+    return true;
+  else
+    return false;
+}
+
+bool State::operator!=(const State& newState) const {
+  if (getState() != newState.getState())
+    return true;
+  else
+    return false;
+}
+
 std::ostream& operator<<(std::ostream& os, const State& state) {
   os << state.state_;
   return os;

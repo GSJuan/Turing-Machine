@@ -15,6 +15,9 @@
 #define AUTOMATON_H
 
 #include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
 #include "alphabet.h"
 #include "state.h"
 #include "transition.h"
@@ -24,11 +27,14 @@ class TuringMachine {
   private:
     Alphabet alphabet_;
     Alphabet tape_alphabet_;
-    std::vector<State> states_;
+
+    std::set<State> states_;
+    std::set<State> final_states_;
+
     std::vector<Transition> transitions_;
+    std::string white_; 
     Tape tape_;
-    State initial_stat_;
-    std::vector<State> final_states_;
+    State initial_state_;
     State current_state_;
     int head_position_;
     bool halt_;
@@ -42,32 +48,15 @@ class TuringMachine {
 
     void loadMachineFromFile(std::ifstream &in);
     void checkMachine();
-    void run();
+    void loadTape(std::string tape);
+    bool run();
     void print();
+    void printTape();
 
-    void setAlphabet(Alphabet alphabet);
-    void setStates(std::vector<State> states);
-    void setTransitions(std::vector<Transition> transitions);
-    void setTape(Tape tape);
-    void setInitialState(State initial_state);
-    void setFinalStates(std::vector<State> final_states);
-    void setCurrentState(State current_state);
-    void setCurrentPosition(int current_position);
-    void setHalt(bool halt);
-    void setAccept(bool accept);
-  
-    Alphabet getAlphabet();
-    std::vector<State> getStates();
-    std::vector<Transition> getTransitions();
-    Tape getTape();
-    State getInitialState();
-    std::vector<State> getFinalStates();
-    State getCurrentState();
-    int getCurrentPosition();
-    bool getHalt();
-    bool getAccept();
+    void updateHead (Movement);
+
+    std::vector<Transition> getTransitions(std::string symbol, State);
+    Transition getTransition(std::string symbol, State);
 };
-
-
 
 #endif
