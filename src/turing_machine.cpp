@@ -162,7 +162,7 @@ void TuringMachine::checkMachine() {
       exit(2);
     }
 
-    if(!alphabet_.isSymbol(transition.getSymbol()) && transition.getSymbol() != ".") {
+    if(!tape_alphabet_.isSymbol(transition.getSymbol()) && transition.getSymbol() != ".") {
       std::cerr << "Error: transition read " << transition.getSymbol() << " not in alphabet" << std::endl;
       exit(2);
     }

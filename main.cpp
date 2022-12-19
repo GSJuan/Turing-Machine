@@ -46,8 +46,12 @@ int main(int argc, char *argv[]) {
       tm.loadTape(input);
       if(tm.run()) {
         std::cout << "Word Accepted!" << std::endl << std::endl;
+        std::cout << "Tape: ";
+        tm.printTape();
       } else {
         std::cout << "Word Rejected!" << std::endl << std::endl;
+        std::cout << "Tape: ";
+        tm.printTape();
       }
     }
   }

@@ -1,0 +1,16 @@
+# Ejemplo de una MT
+# Reconoce cadenas de n aes seguido de m bes donde m < n y n > 0
+# Ejemplo: aaabb es aceptada, abbb no
+q0 q1 q2 q3
+a b
+a b x y .
+q0
+.
+q3
+q0 a q1 x R
+q1 a q1 a R
+q1 y q1 y R
+q1 b q2 y L
+q1 . q3 . L
+q2 y q2 y L
+q2 a q1 x R
