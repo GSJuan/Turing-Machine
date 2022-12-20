@@ -36,7 +36,6 @@ class TuringMachine {
     Tape tape_;
     State initial_state_;
     State current_state_;
-    int head_position_;
     bool halt_;
     bool accept_;
 

@@ -23,6 +23,7 @@ class Tape {
   private: 
   std::vector<std::string> tape_;
   std::string white_;
+  int head_position_;
 
   public:
     Tape();
@@ -34,12 +35,20 @@ class Tape {
 
     std::vector<std::string> getTape() const;
     void setTape(std::vector<std::string> tape);
+    int getHeadPosition();
+    void setHeadPosition(int position);
+
 
     friend std::ostream& operator<<(std::ostream& os, const Tape& tape);
 
-    void write(std::string symbol, int position);
-    std::string read(int position);
+    void write(std::string symbol);
+    std::string read();
     void padRight(int position);
+    void padLeft(int position);
+    void moveRight();
+    void moveLeft();
+
+
 
 };
 

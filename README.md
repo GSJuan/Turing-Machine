@@ -5,7 +5,7 @@ Simulador de Máquina de turing
 
 Escritura y movimientos simultaneos
 Dispone de movimientos L, R , S
-Cinta infinita solo a la derecha
+Cinta infinita a ambos lados
 
 Requisitos: Tener instalado y actualizado cmake y gdb
 ```bash

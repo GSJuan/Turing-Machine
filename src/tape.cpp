@@ -16,6 +16,7 @@
 Tape::Tape() {
   tape_ = {};
   white_ = ".";
+  head_position_ = 0;
 }
 
 Tape::Tape(std::vector<std::string> tape) {
@@ -58,20 +59,50 @@ std::ostream& operator<<(std::ostream& os, const Tape& tape) {
   return os;
 }
 
-void Tape::write(std::string symbol, int position) {
-  if(position >= tape_.size())
-    padRight(position);
-  tape_[position] = symbol;
+void Tape::write(std::string symbol) {
+  if(head_position_ >= tape_.size()) {
+    padRight(head_position_ );
+  } else if(head_position_  < 0) {
+    padLeft(head_position_);
+    head_position_ = 0;
+  }   
+  tape_[head_position_ ] = symbol;
 }
 
-std::string Tape::read(int position) {
-  if(position >= tape_.size())
-    padRight(position);
-  return tape_[position];
+std::string Tape::read() {
+  if(head_position_ >= tape_.size()) {
+    padRight(head_position_);
+  } else if(head_position_ < 0) {
+    padLeft(head_position_);
+    head_position_ = 0;
+  } 
+  return tape_[head_position_];
 }
 
 void Tape::padRight(int position) {
   for (int i = tape_.size(); i <= position; i++) {
     tape_.push_back(white_);
   }
+}
+
+void Tape::padLeft(int position) {
+  for (int i = position; i < 0; i++) {
+    tape_.insert(tape_.begin(), white_);
+  }
+}
+
+void Tape::moveRight() {
+  head_position_++;
+}
+
+void Tape::moveLeft() {
+  head_position_--;
+}
+
+void Tape::setHeadPosition(int position) {
+  head_position_ = position;
+}
+
+int Tape::getHeadPosition() {
+  return head_position_;
 }

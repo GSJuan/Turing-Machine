@@ -58,10 +58,10 @@ TuringMachine::TuringMachine() {
   final_states_ = std::set<State>();
   transitions_ = std::vector<Transition>();
   tape_ = Tape();
+  tape_.setHeadPosition(0);
   initial_state_ = State();
   current_state_ = State();
   white_ = ".";
-  head_position_ = 0;
   halt_ = false;
   accept_ = false;
 }
@@ -199,7 +199,7 @@ bool TuringMachine::run() {
   }
   int infiniteLoop = 0;
   current_state_ = initial_state_;
-  head_position_ = 0;
+  tape_.setHeadPosition(0);
   halt_ = false;
   accept_ = false;
 
@@ -208,12 +208,12 @@ bool TuringMachine::run() {
     if(infiniteLoop > 100000) {
       return false;
     }
-    std::string current_symbol = tape_.read(head_position_);
+    std::string current_symbol = tape_.read();
     Transition transition = getTransition(current_symbol, current_state_);
     if(transition.getSymbol() == "") {
       halt_ = true;
     } else {
-      tape_.write(transition.getNextSymbol(), head_position_);
+      tape_.write(transition.getNextSymbol());
       updateHead(transition.getMovement());
       current_state_ = transition.getNextState();
     }
@@ -263,9 +263,9 @@ void TuringMachine::printTape() {
 
 void TuringMachine::updateHead(Movement movement) {
   if(movement.getMovement() == "L") {
-    head_position_--;
+    tape_.moveLeft();
   } else if(movement.getMovement() == "R") {
-    head_position_++;
+    tape_.moveRight();
   }
 }
 
