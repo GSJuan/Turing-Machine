@@ -14,14 +14,15 @@
 #include "turing_machine.h"
 
 int main(int argc, char *argv[]) {
-
+/*
   if(argc <= 2) {
     std::cout << "Usage: " << argv[0] << " -f <filename inside test directory>"  << std::endl;
     return 1;
   }
+  */
 
   std::string path = TEST_RESOURCE_DIR;
-  path += argv[2];
+  path += "ej2.txt";
   TuringMachine tm = TuringMachine(path);
 
   while (true) {
