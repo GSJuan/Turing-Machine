@@ -35,9 +35,9 @@ class Tape {
 
     std::vector<std::string> getTape() const;
     void setTape(std::vector<std::string> tape);
+
     int getHeadPosition();
     void setHeadPosition(int position);
-
 
     friend std::ostream& operator<<(std::ostream& os, const Tape& tape);
 

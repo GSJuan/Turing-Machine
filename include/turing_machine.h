@@ -30,12 +30,13 @@ class TuringMachine {
 
     std::set<State> states_;
     std::set<State> final_states_;
-
-    std::vector<Transition> transitions_;
-    std::string white_; 
-    Tape tape_;
     State initial_state_;
     State current_state_;
+
+    std::vector<Transition> transitions_;
+    std::string white_;
+    Tape tape_;
+
     bool halt_;
     bool accept_;
 
@@ -47,12 +48,14 @@ class TuringMachine {
 
     void loadMachineFromFile(std::ifstream &in);
     void checkMachine();
-    void loadTape(std::string tape);
-    bool run();
-    void print();
-    void printTape();
 
-    void updateHead (Movement);
+    void loadTape(std::string tape);
+    void updateHead(Movement);
+
+    void print(); 
+    void printTape();
+    
+    bool run();
 
     std::vector<Transition> getTransitions(std::string symbol, State);
     Transition getTransition(std::string symbol, State);

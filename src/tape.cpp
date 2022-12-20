@@ -74,10 +74,12 @@ void Tape::write(std::string symbol) {
 }
 
 std::string Tape::read() {
+  
   if (this->head_position_ >= this->tape_.size()) {
     padRight(this->head_position_);
-  }
-  
+  } 
+  //ojo no poner if else, por algun motivo si head_position es -1
+  // entra en el primer condicional y explota
   if(this->head_position_ < 0) {
     padLeft(this->head_position_);
     this->head_position_ = 0;

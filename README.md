@@ -3,7 +3,7 @@
 ### Español:
 Simulador de Máquina de turing
 
-Escritura y movimientos simultaneos
+Escritura y movimientos separados
 Dispone de movimientos L, R , S
 Cinta infinita a ambos lados
 
@@ -33,4 +33,4 @@ Por ello, es necesario que el archivo se encuentre en el directorio y solo pase 
 Códigos de error:
  + 1 - Error en la apertura de archivo de definición de autómata
  + 2 - Autómata definido incorrectamente
- + 3 - Tape not loaded before running
+ + 3 - Cinta sin cargar

@@ -14,7 +14,7 @@
 #include "turing_machine.h"
 
 // Helper
-// Given a string, return a vector of strings with the symbols of the string separated by the given delimiter
+// Given a string, return a set of States with the symbols of the string separated by the given delimiter
 std::set<State> stateSetSplit(std::string str, char delimiter) {
   std::set<State> internal;
   std::istringstream iss(str); // Turn the string into a stream.
@@ -143,6 +143,7 @@ void TuringMachine::checkMachine() {
     exit(2);
   }
 
+  // Checking if the final states are in the states
   for(auto state : final_states_) {
     if(states_.find(state) == states_.end()) {
       std::cerr << "Error: final state " << state << " not in states" << std::endl;

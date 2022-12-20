@@ -32,12 +32,16 @@ class Transition {
 
     State getState() const;
     void setState(State state);
+
     std::string getSymbol() const;
     void setSymbol(std::string symbol);
+
     State getNextState() const;
     void setNextState(State next_state);
+
     std::string getNextSymbol() const;
     void setNextSymbol(std::string next_symbol);
+    
     Movement getMovement() const;
     void setMovement(Movement movement);
 

@@ -29,6 +29,7 @@ class Alphabet {
 
     std::set<std::string> getAlphabet() const;
     void setAlphabet(std::set<std::string> alphabet);
+    
     void addSymbol(std::string symbol);
     bool isSymbol(std::string symbol);
 
